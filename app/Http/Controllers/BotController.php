@@ -21,7 +21,6 @@ class BotController extends Controller
 
         $input = file_get_contents('php://input');
         $data = json_decode($input);
-        dd($data);
         $chatId = $data['message']['chat']['id'];
         $text = $data['message']['text'];
 
