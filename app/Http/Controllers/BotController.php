@@ -41,7 +41,7 @@ class BotController extends Controller
         }
 
         $response = $this->httpClient->post('https://api.telegram.org/bot' . $BOT_TOKEN . '/sendMessage' . '?chat_id=' . $chatId . '&text=' .
-        $msg .'reply_markup='. '&disable_web_page_preview='.$encodedKeyboard,['verify' => false]);
+        $msg .'?reply_markup='. '&disable_web_page_preview='.$encodedKeyboard,['verify' => false]);
 
     }
 }
