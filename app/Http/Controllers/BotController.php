@@ -21,18 +21,18 @@ class BotController extends Controller
 
         $input = file_get_contents('php://input');
         $data = json_decode($input);
-        $chatId = $data->message->chatid;
+        $chatId = $data->message->chat->id;
         $text = $data->message->text;
 
         if($text == '/start'){
-            $msg = "Welcome";
+            $msg = "Welcome @" . $data->message->chat->username ;
         }
         else{
             $msg = "Other message";
         }
 
-        $response = $this->httpClient->get('https://api.telegram.org/bot' . $BOT_TOKEN . '/sendMessage' . '?chat_id=' . $chatId . '&text=' . $text . '&disable_web_page_preview=');
-        // $response = $this->httpClient->post('https://api.telegram.org/bot' . $BOT_TOKEN . '/sendMessage' . '?chat_id=465380590&text=tells');
+        $response = $this->httpClient->post('https://api.telegram.org/bot' . $BOT_TOKEN . '/sendMessage' . '?chat_id=' . $chatId . '&text=' .
+        $msg . '&disable_web_page_preview=',['verify' => false]);
 
     }
 }

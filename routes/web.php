@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('/telegram-bot' , 'BotController@index')->name('bot.index');
+Route::post('/telegram-bot' , 'BotController@index')->name('bot.index');
 
