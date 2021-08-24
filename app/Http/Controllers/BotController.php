@@ -36,6 +36,10 @@ class BotController extends Controller
             ];
             $encodedKeyboard = json_encode($keyboard);
         }
+        elseif($text == '/status'){
+
+            $msg = "Received from inline keyboard" ;
+        }
         else{
             $msg = "Other TEXT HERE";
         }
