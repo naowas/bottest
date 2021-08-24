@@ -26,13 +26,22 @@ class BotController extends Controller
 
         if($text == '/start'){
             $msg = "Welcome @" . $data->message->chat->username ;
+
+            $keyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'forward me to groups', 'callback_data' => '/status']
+                    ]
+                ]
+            ];
+            $encodedKeyboard = json_encode($keyboard);
         }
         else{
             $msg = "Other TEXT HERE";
         }
 
         $response = $this->httpClient->post('https://api.telegram.org/bot' . $BOT_TOKEN . '/sendMessage' . '?chat_id=' . $chatId . '&text=' .
-        $msg . '&disable_web_page_preview=',['verify' => false]);
+        $msg .'reply_markup='. '&disable_web_page_preview='.$encodedKeyboard,['verify' => false]);
 
     }
 }
