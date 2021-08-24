@@ -28,7 +28,7 @@ class BotController extends Controller
             $msg = "Welcome @" . $data->message->chat->username ;
         }
         else{
-            $msg = "Other message";
+            $msg = "Other TEXT HERE";
         }
 
         $response = $this->httpClient->post('https://api.telegram.org/bot' . $BOT_TOKEN . '/sendMessage' . '?chat_id=' . $chatId . '&text=' .
